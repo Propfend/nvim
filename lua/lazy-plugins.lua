@@ -3,8 +3,6 @@ require('lazy').setup({
 
   require 'plugins.gitsigns',
 
-  require 'plugins.which-key',
-
   require 'plugins.telescope',
 
   require 'plugins.lspconfig',
@@ -12,10 +10,6 @@ require('lazy').setup({
   require 'plugins.conform',
 
   require 'plugins.blink-cmp',
-
-  require 'plugins.tokyonight',
-
-  require 'plugins.todo-comments',
 
   require 'plugins.mini',
 
