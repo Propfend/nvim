@@ -14,7 +14,11 @@ return {
     filesystem = {
       window = {
         mappings = {
+	  ["<leader>n"] = "open",
           ['\\'] = 'close_window',
+	  ["n"] = 'open',
+	  ["l"] = "next_sibling",
+	  ["k"] = "prev_sibling",
         },
       },
     },

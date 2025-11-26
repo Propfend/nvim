@@ -8,7 +8,7 @@ vim.o.mouse = 'a'
 
 vim.o.showmode = false
 
-vim.opt.whichwrap:append '<,>,h,l'
+vim.opt.whichwrap:append '<,>,h,l,[,]'
 
 vim.schedule(function()
   vim.o.clipboard = 'unnamedplus'

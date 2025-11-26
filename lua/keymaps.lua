@@ -8,10 +8,10 @@ vim.keymap.set('n', '<leader>q', vim.diagnostic.setloclist, { desc = 'Open diagn
 
 vim.keymap.set('t', '<Esc><Esc>', '<C-\\><C-n>', { desc = 'Exit terminal mode' })
  
-vim.keymap.set('n', 'j', '<Left>')
-vim.keymap.set('n', 'k', '<Up>')
-vim.keymap.set('n', 'l', '<Down>')
-vim.keymap.set('n', 'ç', '<Right>')
+vim.keymap.set({'n', 'v'}, 'j', '<Left>')
+vim.keymap.set({'n', 'v'}, 'k', '<Up>')
+vim.keymap.set({'n', 'v'}, 'l', '<Down>')
+vim.keymap.set({'n', 'v'}, 'ç', '<Right>')
 
 vim.keymap.set('n', 'h', '<Nop>')
 
