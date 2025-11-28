@@ -21,8 +21,10 @@ return {
     inverse = true,
     contrast = 'hard',
     palette_overrides = {},
-    overrides = {},
     dim_inactive = false,
+    overrides = {
+      Normal = { bg = '#0D1117' },
+    },
     transparent_mode = false,
   },
 }
