@@ -2,7 +2,13 @@ vim.o.number = true
 
 vim.o.relativenumber = true
 
-vim.opt.autoindent = false
+vim.o.autoindent = false
+
+vim.opt.shiftwidth = 1
+
+vim.opt.expandtab = true
+
+vim.opt.tabstop = 1
 
 vim.o.mouse = 'a'
 
@@ -17,7 +23,7 @@ end)
 vim.o.breakindent = true
 
 vim.o.undofile = true
-vim.opt.mouse = 'a'
+vim.o.mouse = 'a'
 
 vim.o.ignorecase = true
 vim.o.smartcase = true
@@ -41,4 +47,3 @@ vim.o.cursorline = true
 vim.o.scrolloff = 0
 
 vim.o.confirm = true
-
