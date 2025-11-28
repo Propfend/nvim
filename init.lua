@@ -11,6 +11,8 @@ require 'lazy-bootstrap'
 
 require 'lazy-plugins'
 
+vim.cmd [[colorscheme gruvbox]]
+
 local function my_on_attach(bufnr)
   local api = require 'nvim-tree.api'
 

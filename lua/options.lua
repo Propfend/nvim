@@ -14,6 +14,8 @@ vim.o.mouse = 'a'
 
 vim.o.showmode = false
 
+vim.o.background = 'dark'
+
 vim.opt.whichwrap:append '<,>,h,l,[,]'
 
 vim.schedule(function()
