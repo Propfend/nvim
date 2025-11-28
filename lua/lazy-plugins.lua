@@ -5,6 +5,8 @@ require('lazy').setup({
 
   require 'plugins.telescope',
 
+  require 'plugins.copilot',
+
   require 'plugins.lspconfig',
 
   require 'plugins.conform',
@@ -52,4 +54,3 @@ require('lazy').setup({
     },
   },
 })
-

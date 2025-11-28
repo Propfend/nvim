@@ -5,23 +5,23 @@ return {
     main = 'nvim-treesitter.configs',
 
     opts = {
-      ensure_installed = { 
-        'bash', 
-        'c', 
+      ensure_installed = {
+        'bash',
+        'c',
         'css',
-        'diff', 
-        'html', 
-        'lua', 
-        'luadoc', 
-        'markdown', 
-        'query', 
+        'diff',
+        'html',
+        'lua',
+        'luadoc',
+        'markdown',
+        'query',
         'javascript',
         'rust',
         'terraform',
         'go',
-        'vim', 
+        'vim',
         'python',
-        'vimdoc'
+        'vimdoc',
       },
       auto_install = true,
       highlight = {
