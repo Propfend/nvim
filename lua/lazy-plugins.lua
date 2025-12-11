@@ -13,6 +13,8 @@ require('lazy').setup({
 
   require 'plugins.gruvbox',
 
+  require 'plugins.local-highlight',
+  
   require 'plugins.blink-cmp',
 
   require 'plugins.mini',
