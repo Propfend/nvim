@@ -15,6 +15,8 @@ require('lazy').setup({
 
   require 'plugins.local-highlight',
   
+  require 'plugins.snacks',
+  
   require 'plugins.blink-cmp',
 
   require 'plugins.mini',
