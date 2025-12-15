@@ -19,6 +19,8 @@ require('lazy').setup({
 
   require 'plugins.nvim-web-devicons',
 
+  require 'plugins.nvim-barbar',
+
   require 'plugins.snacks',
 
   require 'plugins.blink-cmp',
