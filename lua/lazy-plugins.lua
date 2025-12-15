@@ -14,9 +14,13 @@ require('lazy').setup({
   require 'plugins.gruvbox',
 
   require 'plugins.local-highlight',
-  
+
+  require 'plugins.nvim-scrollbar',
+
+  require 'plugins.nvim-web-devicons',
+
   require 'plugins.snacks',
-  
+
   require 'plugins.blink-cmp',
 
   require 'plugins.mini',
