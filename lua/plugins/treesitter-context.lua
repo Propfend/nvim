@@ -1,6 +1,6 @@
 return {
   {
-    'treesitter-context',
+    'nvim-treesitter/nvim-treesitter-context',
     enable = true, -- Enable this plugin (Can be enabled/disabled later via commands)
     multiwindow = false, -- Enable multiwindow support.
     max_lines = 0, -- How many lines the window should span. Values <= 0 mean no limit.
@@ -12,7 +12,7 @@ return {
     -- Separator between context and content. Should be a single character string, like '-'.
     -- When separator is set, the context will only show up when there are at least 2 lines above cursorline.
     separator = nil,
-    zindex = 20, -- The Z-index of the context window
+    zindex = 20,- The Z-index of the context window
     on_attach = nil, -- (fun(buf: integer): boolean) return false to disable attaching
   },
 }
