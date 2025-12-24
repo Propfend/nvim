@@ -25,6 +25,8 @@ require('lazy').setup({
 
   require 'plugins.blink-cmp',
 
+  require 'plugins.treesitter-context',
+
   require 'plugins.mini',
 
   require 'plugins.treesitter',
