@@ -16,6 +16,11 @@ vim.keymap.set({ 'n', 'v' }, 'j', '<Left>')
 vim.keymap.set({ 'n', 'v' }, 'k', '<Up>')
 vim.keymap.set({ 'n', 'v' }, 'l', '<Down>')
 vim.keymap.set({ 'n', 'v' }, 'ç', '<Right>')
+--vim.keymap.set("n", "[c", function()
+
+vim.keymap.set('n', '<leader>k', function()
+  require('treesitter-context').go_to_context(vim.v.count1)
+end, { silent = true })
 
 vim.keymap.set('n', 'h', '<Nop>')
 
