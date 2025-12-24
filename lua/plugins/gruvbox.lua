@@ -25,6 +25,6 @@ return {
     overrides = {
       Normal = { bg = '#0D1117' },
     },
-    transparent_mode = false,
+    transparent_mode = true,
   },
 }
