@@ -27,7 +27,7 @@ return {
         end
       end,
       formatters_by_ft = {
-        lua = { 'stylua' },
+                  lua = { 'stylua .' },
         rust = { 'cargo fmt' },
         go = { 'gofmt' },
         python = { 'isort', 'black' },

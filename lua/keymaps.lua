@@ -21,8 +21,8 @@ vim.keymap.set('n', '<leader>k', function()
   require('treesitter-context').go_to_context(vim.v.count1)
 end, { silent = true })
 
-vim.keymap.set("n", "gd", vim.lsp.buf.definition, { silent = true })
-vim.keymap.set("n", "gr", vim.lsp.buf.references, { silent = true })
+vim.keymap.set('n', 'gd', vim.lsp.buf.definition, { silent = true })
+vim.keymap.set('n', 'gr', vim.lsp.buf.references, { silent = true })
 
 vim.keymap.set('n', 'h', '<Nop>')
 

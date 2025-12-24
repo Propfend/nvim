@@ -1,5 +1,5 @@
 return {
-  "folke/snacks.nvim",
+  'folke/snacks.nvim',
   priority = 1000,
   lazy = false,
   ---@type snacks.Config
@@ -18,9 +18,9 @@ return {
     -- words = { enabled = true },
     animate = {
       duration = 20,
-      easing = "linear",
+      easing = 'linear',
       fps = 120,
       enable = true,
     },
-  }
+  },
 }

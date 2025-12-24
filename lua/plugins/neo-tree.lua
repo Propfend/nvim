@@ -18,7 +18,7 @@ return {
         hide_gitignored = true,
         hide_hidden = true,
         always_show_folders = false,
-        never_show = {".git"},
+        never_show = { '.git' },
       },
       window = {
         mappings = {
