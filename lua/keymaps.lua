@@ -7,6 +7,25 @@ vim.api.nvim_set_keymap('n', '<C-u>', '<C-u>zz', { noremap = true, silent = true
 vim.keymap.set('n', '<leader>q', vim.diagnostic.setloclist, { desc = 'Open diagnostic [Q]uickfix list' })
 vim.keymap.set('i', '<Tab>', '<C-y>')
 
+vim.keymap.set({'i', 'n'}, '<leader>q', function()
+  local pattern = vim.fn.getreg("/")
+  if pattern == "" then
+    vim.notify("No active search pattern", vim.log.levels.WARN)
+    return
+  end
+
+  local replacement = vim.fn.input("Replace '" .. pattern .. "' with: ")
+  if replacement == "" then
+    return
+  end
+
+  local escaped_repl = vim.fn.escape(replacement, "\\/")
+
+  vim.cmd(
+    ":%s/" .. pattern .. "/" .. escaped_repl .. "/g"
+  )
+end)
+
 vim.keymap.set('t', '<Esc><Esc>', '<C-\\><C-n>', { desc = 'Exit terminal mode' })
 
 vim.keymap.set({ 'n', 'v', 'i' }, 'f,', '<Cmd>BufferPrevious<CR>', { desc = 'Switch to previous window' })

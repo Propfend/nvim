@@ -20,17 +20,17 @@ vim.cmd [[
   highlight NonText ctermbg=none
 ]]
 
-local events = { 'BufEnter', 'BufWritePost', 'CursorMoved' }
-
-local my_group = vim.api.nvim_create_augroup('NvimListeners', { clear = true })
-
-vim.api.nvim_create_autocmd(events, {
-    group = my_group,
-    pattern = { '*' },
-    callback = function(args)
-        print('Event fired in file: ' .. args.file)
-    end,
-})
+-- local events = { 'BufEnter', 'BufWritePost', 'CursorMoved' }
+--
+-- local my_group = vim.api.nvim_create_augroup('NvimListeners', { clear = true })
+--
+-- vim.api.nvim_create_autocmd(events, {
+--     group = my_group,
+--     pattern = { '*' },
+--     callback = function(args)
+--         print('Event fired in file: ' .. args.file)
+--     end,
+-- })
 
 local function my_on_attach(bufnr)
     local api = require 'nvim-tree.api'
