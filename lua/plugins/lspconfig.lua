@@ -19,6 +19,16 @@ return {
       'saghen/blink.cmp',
     },
     config = function()
+      vim.lsp.config('terraformls', {
+        cmd = { 'terraform-ls', 'serve' },
+        filetypes = { 'terraform', 'terraform-vars' },
+        root_dir = vim.fs.root(0, {
+          '.terraform',
+          '.git',
+          '*.tf',
+        }),
+      })
+
       vim.api.nvim_create_autocmd('LspAttach', {
         group = vim.api.nvim_create_augroup('kickstart-lsp-attach', { clear = true }),
         callback = function(event)

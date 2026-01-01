@@ -15,6 +15,8 @@ require('lazy').setup({
 
   require 'plugins.local-highlight',
 
+  require 'plugins.arduino-nvim',
+
   require 'plugins.nvim-scrollbar',
 
   require 'plugins.nvim-web-devicons',

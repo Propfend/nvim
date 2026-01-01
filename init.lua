@@ -20,6 +20,8 @@ vim.cmd [[
   highlight NonText ctermbg=none
 ]]
 
+vim.cmd([[let g:terraform_fmt_on_save=1]])
+vim.cmd([[let g:terraform_align=1]])
 -- local events = { 'BufEnter', 'BufWritePost', 'CursorMoved' }
 --
 -- local my_group = vim.api.nvim_create_augroup('NvimListeners', { clear = true })

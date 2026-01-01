@@ -33,6 +33,7 @@ return {
         python = { 'isort', 'black' },
         javascript = { 'prettierd', 'prettier' },
         nix = { 'treefmt' },
+        terraform = { 'terraform_fmt' },
       },
     },
   },
