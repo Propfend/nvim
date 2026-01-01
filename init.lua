@@ -20,6 +20,18 @@ vim.cmd [[
   highlight NonText ctermbg=none
 ]]
 
+local function compile_and_upload_arduino_sketch()
+  vim.cmd("w")
+  vim.cmd("InoCheck")
+  vim.cmd("InoUpload")
+end
+
+vim.keymap.set("n", "<leader>a", compile_and_upload_arduino_sketch, {
+  noremap = true,
+  silent = true,
+  desc = "Save, compile and upload arduino sketch",
+})
+
 vim.cmd([[let g:terraform_fmt_on_save=1]])
 vim.cmd([[let g:terraform_align=1]])
 -- local events = { 'BufEnter', 'BufWritePost', 'CursorMoved' }
