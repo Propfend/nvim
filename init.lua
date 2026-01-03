@@ -21,19 +21,19 @@ vim.cmd [[
 ]]
 
 local function compile_and_upload_arduino_sketch()
-  vim.cmd("w")
-  vim.cmd("InoCheck")
-  vim.cmd("InoUpload")
+  vim.cmd 'w'
+  vim.cmd 'InoCheck'
+  vim.cmd 'InoUpload'
 end
 
-vim.keymap.set("n", "<leader>a", compile_and_upload_arduino_sketch, {
+vim.keymap.set('n', '<leader>a', compile_and_upload_arduino_sketch, {
   noremap = true,
   silent = true,
-  desc = "Save, compile and upload arduino sketch",
+  desc = 'Save, compile and upload arduino sketch',
 })
 
-vim.cmd([[let g:terraform_fmt_on_save=1]])
-vim.cmd([[let g:terraform_align=1]])
+vim.cmd [[let g:terraform_fmt_on_save=1]]
+vim.cmd [[let g:terraform_align=1]]
 -- local events = { 'BufEnter', 'BufWritePost', 'CursorMoved' }
 --
 -- local my_group = vim.api.nvim_create_augroup('NvimListeners', { clear = true })
@@ -47,14 +47,14 @@ vim.cmd([[let g:terraform_align=1]])
 -- })
 
 local function my_on_attach(bufnr)
+  local api = require 'nvim-tree.api'
+
+  vim.keymap.set('n', '<LeftRelease>', function()
     local api = require 'nvim-tree.api'
+    local node = api.tree.get_node_under_cursor()
 
-    vim.keymap.set('n', '<LeftRelease>', function()
-        local api = require 'nvim-tree.api'
-        local node = api.tree.get_node_under_cursor()
-
-        if node.nodes ~= nil then
-            api.node.open.edit()
-        end
-    end, {})
+    if node.nodes ~= nil then
+      api.node.open.edit()
+    end
+  end, {})
 end

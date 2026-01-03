@@ -21,7 +21,7 @@ return {
     config = function()
       vim.lsp.config('terraformls', {
         cmd = { 'terraform-ls', 'serve' },
-        filetypes = { 'terraform', 'terraform-vars' },
+        filetypes = { 'terraform', 'terraform-vars', 'tf' },
         root_dir = vim.fs.root(0, {
           '.terraform',
           '.git',
@@ -255,4 +255,3 @@ return {
     end,
   },
 }
--- vim: ts=2 sts=2 sw=2 et
