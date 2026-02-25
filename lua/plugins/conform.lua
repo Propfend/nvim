@@ -3,20 +3,10 @@ return {
     'stevearc/conform.nvim',
     event = { 'BufWritePre' },
     cmd = { 'ConformInfo' },
-    keys = {
-      {
-        '<leader>f',
-        function()
-          require('conform').format { async = true, lsp_format = 'fallback' }
-        end,
-        mode = '',
-        desc = '[F]ormat buffer',
-      },
-    },
     opts = {
       notify_on_error = false,
       format_on_save = function(bufnr)
-        local disable_filetypes = { c = true, cpp = true }
+        local disable_filetypes = { c = true, cpp = true, markdown = true }
         if disable_filetypes[vim.bo[bufnr].filetype] then
           return nil
         else
@@ -35,7 +25,7 @@ return {
         typescript = { 'prettierd' },
         nix = { 'alejandra' },
         terraform = { 'terraform_fmt' },
-        markdown = { 'markdownfmt' },
+        markdown = {},
       },
     },
   },

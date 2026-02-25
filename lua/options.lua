@@ -8,6 +8,8 @@ vim.opt.shiftwidth = 4
 
 vim.opt.expandtab = true
 
+vim.g.lazyvim_eslint_auto_format = true
+
 vim.opt.tabstop = 4
 
 vim.o.mouse = 'a'

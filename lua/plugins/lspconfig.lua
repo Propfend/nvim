@@ -4,6 +4,32 @@ return {
     'folke/lazydev.nvim',
     ft = 'lua',
     opts = {
+      servers = {
+        eslint = {
+          settings = {
+            -- helps eslint find the eslintrc when it's placed in a subfolder instead of the cwd root
+            workingDirectories = { mode = 'auto' },
+            format = auto_format,
+          },
+        },
+      },
+      setup = {
+        eslint = function()
+          if not auto_format then
+            return
+          end
+
+          local formatter = LazyVim.lsp.formatter {
+            name = 'eslint: lsp',
+            primary = false,
+            priority = 200,
+            filter = 'eslint',
+          }
+
+          -- register the formatter with LazyVim
+          LazyVim.format.register(formatter)
+        end,
+      },
       library = {
         { path = '${3rd}/luv/library', words = { 'vim%.uv' } },
       },
@@ -11,13 +37,7 @@ return {
   },
   {
     'neovim/nvim-lspconfig',
-    dependencies = {
-      { 'mason-org/mason.nvim', opts = {} },
-      'mason-org/mason-lspconfig.nvim',
-      'WhoIsSethDaniel/mason-tool-installer.nvim',
-      { 'j-hui/fidget.nvim', opts = {} },
-      'saghen/blink.cmp',
-    },
+    dependencies = {},
     config = function()
       vim.lsp.config('terraformls', {
         cmd = { 'terraform-ls', 'serve' },
@@ -133,6 +153,7 @@ return {
         end,
       })
 
+      vim.lsp.enable 'ast_grep'
       -- Diagnostic Config
       -- See :help vim.diagnostic.Opts
       vim.diagnostic.config {
@@ -191,17 +212,21 @@ return {
               checkOnSave = {
                 command = 'clippy',
               },
+              hover = {
+                show = {
+                  fields = vim.NIL,
+                  traitAssocItems = vim.NIL,
+                },
+              },
             },
           },
         },
-        -- ... etc. See `:help lspconfig-all` for a list of all the pre-configured LSPs
-        --
-        -- Some languages (like typescript) have entire language plugins that can be useful:
-        --    https://github.com/pmizio/typescript-tools.nvim
-        --
-        -- But for many setups, the LSP (`ts_ls`) will work just fine
-        -- ts_ls = {},
-        --
+
+        ts_ls = {},
+        cssls = {},
+        html = {},
+        yamlls = {},
+        jsonls = {},
 
         lua_ls = {
           -- cmd = { ... },
@@ -232,26 +257,11 @@ return {
       --
       -- You can add other tools here that you want Mason to install
       -- for you, so that they are available from within Neovim.
-      local ensure_installed = vim.tbl_keys(servers or {})
-      vim.list_extend(ensure_installed, {
-        'stylua', -- Used to format Lua code
-      })
-      require('mason-tool-installer').setup { ensure_installed = ensure_installed }
-
-      require('mason-lspconfig').setup {
-        ensure_installed = {}, -- explicitly set to an empty table (Kickstart populates installs via mason-tool-installer)
-        automatic_installation = false,
-        handlers = {
-          function(server_name)
-            local server = servers[server_name] or {}
-            -- This handles overriding only values explicitly passed
-            -- by the server configuration above. Useful when disabling
-            -- certain features of an LSP (for example, turning off formatting for ts_ls)
-            server.capabilities = vim.tbl_deep_extend('force', {}, capabilities, server.capabilities or {})
-            require('lspconfig')[server_name].setup(server)
-          end,
-        },
-      }
+      for server_name, server_config in pairs(servers) do
+        server_config.capabilities = vim.tbl_deep_extend('force', {}, capabilities, server_config.capabilities or {})
+        vim.lsp.config(server_name, server_config)
+        vim.lsp.enable(server_name)
+      end
     end,
   },
 }

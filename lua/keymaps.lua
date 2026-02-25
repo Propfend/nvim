@@ -28,6 +28,7 @@ vim.keymap.set('t', '<Esc><Esc>', '<C-\\><C-n>', { desc = 'Exit terminal mode' }
 
 vim.keymap.set({ 'n', 'v', 'i' }, 'f,', '<Cmd>BufferPrevious<CR>', { desc = 'Switch to previous window' })
 vim.keymap.set({ 'n', 'v', 'i' }, 'f.', '<Cmd>BufferNext<CR>', { desc = 'Switch to next window' })
+vim.keymap.set({ 'n', 'v', 'i' }, 'ff', '<Cmd>BufferClose<CR>', { desc = 'Switch to next window' })
 
 vim.keymap.set('n', 'K', function()
   vim.lsp.buf.hover { border = 'rounded' }

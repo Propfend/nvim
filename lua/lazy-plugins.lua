@@ -3,6 +3,8 @@ require('lazy').setup({
 
   require 'plugins.gitsigns',
 
+  require 'plugins.rhai',
+
   require 'plugins.telescope',
 
   require 'plugins.copilot',
@@ -33,7 +35,6 @@ require('lazy').setup({
 
   require 'plugins.treesitter',
   --
-  require 'plugins.debug',
   require 'plugins.indent_line',
   require 'plugins.autopairs',
   require 'plugins.neo-tree',
