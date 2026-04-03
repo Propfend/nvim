@@ -20,6 +20,19 @@ vim.o.background = 'dark'
 
 vim.opt.whichwrap:append '<,>,h,l,[,]'
 
+vim.g.clipboard = {
+  name = 'wl-clipboard',
+  copy = {
+    ['+'] = 'wl-copy',
+    ['*'] = 'wl-copy --primary',
+  },
+  paste = {
+    ['+'] = 'wl-paste --no-newline',
+    ['*'] = 'wl-paste --no-newline --primary',
+  },
+  cache_enabled = 0,
+}
+
 vim.schedule(function()
   vim.o.clipboard = 'unnamedplus'
 end)

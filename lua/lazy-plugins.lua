@@ -5,6 +5,8 @@ require('lazy').setup({
 
   require 'plugins.rhai',
 
+  require 'plugins.image',
+
   require 'plugins.telescope',
 
   require 'plugins.copilot',
