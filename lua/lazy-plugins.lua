@@ -3,6 +3,8 @@ require('lazy').setup({
 
   require 'plugins.gitsigns',
 
+  require 'plugins.hop',
+
   require 'plugins.rhai',
 
   require 'plugins.image',

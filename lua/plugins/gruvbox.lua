@@ -24,6 +24,9 @@ return {
     dim_inactive = false,
     overrides = {
       Normal = { bg = '#0D1117' },
+      LspReferenceText = { bg = '#3c4048' },
+      LspReferenceRead = { bg = '#3c4048' },
+      LspReferenceWrite = { bg = '#4a3a2a' },
     },
     transparent_mode = true,
   },
