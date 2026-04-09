@@ -3,7 +3,9 @@ require('lazy').setup({
 
   require 'plugins.gitsigns',
 
-  require 'plugins.hop',
+  require 'plugins.markdown-preview',
+
+  require 'plugins.gitsigns',
 
   require 'plugins.rhai',
 
