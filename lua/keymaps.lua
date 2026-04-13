@@ -41,6 +41,12 @@ vim.keymap.set('n', 'K', function()
   vim.lsp.buf.hover { border = 'rounded' }
 end)
 
+vim.keymap.set('n', 'gdf', '<Cmd>Gdiffsplit<CR>')
+
+vim.keymap.set('n', 'dg', '<Cmd>diffget<CR>')
+
+vim.keymap.set('n', 'dp', '<Cmd>diffput<CR>')
+
 vim.keymap.set({ 'n', 'v' }, 'j', '<Left>')
 vim.keymap.set({ 'n', 'v' }, 'k', '<Up>')
 vim.keymap.set({ 'n', 'v' }, 'l', '<Down>')

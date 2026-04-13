@@ -3,6 +3,8 @@ require('lazy').setup({
 
   require 'plugins.gitsigns',
 
+  require 'plugins.git-conflict',
+
   require 'plugins.nvim-fugitive',
 
   require 'plugins.markdown-preview',
