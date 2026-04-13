@@ -7,6 +7,13 @@ vim.api.nvim_set_keymap('n', '<C-u>', '<C-u>zz', { noremap = true, silent = true
 vim.keymap.set('n', '<leader>q', vim.diagnostic.setloclist, { desc = 'Open diagnostic [Q]uickfix list' })
 vim.keymap.set('i', '<Tab>', '<C-y>')
 
+vim.g.copilot_no_tab_map = true
+vim.keymap.set('i', '<C-Tab>', 'copilot#Accept("\\<CR>")', {
+  expr = true,
+  replace_keycodes = false,
+  desc = 'Accept Copilot suggestion',
+})
+
 vim.keymap.set({ 'i', 'n' }, '<leader>q', function()
   local pattern = vim.fn.getreg '/'
   if pattern == '' then

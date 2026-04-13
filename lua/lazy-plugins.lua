@@ -3,7 +3,11 @@ require('lazy').setup({
 
   require 'plugins.gitsigns',
 
+  require 'plugins.nvim-fugitive',
+
   require 'plugins.markdown-preview',
+
+  require 'plugins.hop',
 
   require 'plugins.gitsigns',
 
@@ -40,9 +44,11 @@ require('lazy').setup({
   require 'plugins.mini',
 
   require 'plugins.treesitter',
-  --
-  require 'plugins.indent_line',
+
+  require 'plugins.indent-line',
+
   require 'plugins.autopairs',
+
   require 'plugins.neo-tree',
 }, {
   ui = {

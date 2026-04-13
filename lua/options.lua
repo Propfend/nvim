@@ -64,3 +64,24 @@ vim.o.cursorline = true
 vim.o.scrolloff = 0
 
 vim.o.confirm = true
+
+vim.o.autoread = true
+
+local checktime_timer = vim.uv.new_timer()
+checktime_timer:start(
+  1000,
+  1000,
+  vim.schedule_wrap(function()
+    if vim.fn.mode() ~= 'c' and vim.api.nvim_get_mode().blocking == false then
+      vim.cmd.checktime()
+    end
+  end)
+)
+
+vim.api.nvim_create_autocmd('FileChangedShellPost', {
+  desc = 'Notify when a buffer is reloaded from disk',
+  group = vim.api.nvim_create_augroup('auto-checktime-notify', { clear = true }),
+  callback = function()
+    vim.notify('File changed on disk. Buffer reloaded.', vim.log.levels.INFO)
+  end,
+})
