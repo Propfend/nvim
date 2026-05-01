@@ -11,6 +11,18 @@ require 'lazy-bootstrap'
 
 require 'lazy-plugins'
 
+vim.diagnostic.config {
+  virtual_text = {
+    prefix = '',
+  },
+  signs = true,
+  underline = false,
+  update_in_insert = true,
+}
+
+local builtin = require 'telescope.builtin'
+vim.keymap.set('n', '<leader>f', builtin.live_grep, { desc = 'Telescope find files' })
+
 -- place this in one of your configuration file(s)
 local hop = require 'hop'
 local directions = require('hop.hint').HintDirection

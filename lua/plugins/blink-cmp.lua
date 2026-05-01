@@ -53,6 +53,17 @@ return {
         --
         -- See :h blink-cmp-config-keymap for defining your own keymap
         preset = 'default',
+        ['<Tab>'] = {
+          function(cmp)
+            if cmp.is_visible() then
+              return cmp.accept()
+            elseif vim.fn['copilot#GetDisplayedSuggestion']().text ~= '' then
+              vim.fn['copilot#Accept']('\t')
+              return true
+            end
+          end,
+          'fallback',
+        },
       },
 
       appearance = {

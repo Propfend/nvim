@@ -236,12 +236,20 @@ return {
               cargo = {
                 allFeatures = true,
               },
-              checkOnSave = {
+              check = {
                 command = 'clippy',
+              },
+              checkOnSave = true,
+              diagnostics = {
+                enable = true,
+                experimental = {
+                  enable = true,
+                },
               },
               hover = {
                 show = {
-                  fields = vim.NIL,
+                  enumVariants = 30,
+                  fields = 30,
                   traitAssocItems = vim.NIL,
                 },
               },
