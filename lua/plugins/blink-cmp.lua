@@ -58,7 +58,7 @@ return {
             if cmp.is_visible() then
               return cmp.accept()
             elseif vim.fn['copilot#GetDisplayedSuggestion']().text ~= '' then
-              vim.fn['copilot#Accept']('\t')
+              vim.api.nvim_feedkeys(vim.fn['copilot#Accept'](''), 'i', true)
               return true
             end
           end,

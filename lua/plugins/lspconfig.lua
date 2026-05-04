@@ -173,9 +173,57 @@ return {
           --
           -- This may be unwanted, since they displace some of your code
           if client and client_supports_method(client, vim.lsp.protocol.Methods.textDocument_inlayHint, event.buf) then
+            vim.lsp.inlay_hint.enable(true, { bufnr = event.buf })
+
             map('<leader>th', function()
               vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled { bufnr = event.buf })
             end, '[T]oggle Inlay [H]ints')
+
+            vim.keymap.set('i', '<leader><Tab>', function()
+              local cursor = vim.api.nvim_win_get_cursor(0)
+              local line = cursor[1] - 1
+              local col = cursor[2]
+              local bufnr = vim.api.nvim_get_current_buf()
+              local nearest_hint = nil
+              local nearest_dist = math.huge
+
+              for _, hint_entry in
+                ipairs(vim.lsp.inlay_hint.get {
+                  bufnr = bufnr,
+                  range = {
+                    start = { line = line, character = 0 },
+                    ['end'] = { line = line, character = 65535 },
+                  },
+                })
+              do
+                local inlay = hint_entry.inlay_hint
+                if inlay and inlay.position then
+                  local dist = math.abs(inlay.position.character - col)
+                  if dist < nearest_dist then
+                    nearest_hint = inlay
+                    nearest_dist = dist
+                  end
+                end
+              end
+
+              if not nearest_hint then
+                return
+              end
+
+              local label = nearest_hint.label
+              if type(label) == 'table' then
+                label = table.concat(vim.tbl_map(function(part)
+                  return part.value
+                end, label))
+              end
+              label = label:gsub('^:%s*', '')
+
+              local pos = vim.api.nvim_win_get_cursor(0)
+              local row = pos[1] - 1
+              local insert_col = pos[2]
+              vim.api.nvim_buf_set_text(bufnr, row, insert_col, row, insert_col, { label })
+              vim.api.nvim_win_set_cursor(0, { pos[1], insert_col + #label })
+            end, { buffer = event.buf, desc = 'LSP: Accept nearest inlay hint' })
           end
         end,
       })
@@ -239,7 +287,7 @@ return {
               check = {
                 command = 'clippy',
               },
-              checkOnSave = true,
+              checkOnSave = false,
               diagnostics = {
                 enable = true,
                 experimental = {
@@ -251,6 +299,45 @@ return {
                   enumVariants = 30,
                   fields = 30,
                   traitAssocItems = vim.NIL,
+                },
+              },
+              inlayHints = {
+                bindingModeHints = { enable = false },
+                chainingHints = { enable = true },
+                closingBraceHints = { enable = true, minLines = 25 },
+                closureReturnTypeHints = { enable = 'never' },
+                lifetimeElisionHints = { enable = 'never', useParameterNames = false },
+                parameterHints = { enable = true },
+                reborrowHints = { enable = 'never' },
+                renderColons = true,
+                typeHints = {
+                  enable = true,
+                  hideNamedConstructor = false,
+                  hideClosureInitialization = false,
+                },
+              },
+            },
+          },
+        },
+
+        nixd = {
+          cmd = { 'nixd' },
+          filetypes = { 'nix' },
+          root_markers = { 'flake.nix', '.git' },
+          settings = {
+            nixd = {
+              nixpkgs = {
+                expr = '(builtins.getFlake (toString ./.)).inputs.nixpkgs.legacyPackages.x86_64-linux',
+              },
+              formatting = {
+                command = { 'alejandra' },
+              },
+              options = {
+                nixos = {
+                  expr = '(builtins.getFlake (toString ./.)).nixosConfigurations.ryoza.options',
+                },
+                home_manager = {
+                  expr = '(builtins.getFlake (toString ./.)).nixosConfigurations.ryoza.options.home-manager.users.type.functor.wrapped',
                 },
               },
             },

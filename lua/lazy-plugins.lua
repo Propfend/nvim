@@ -3,6 +3,10 @@ require('lazy').setup({
 
   require 'plugins.gitsigns',
 
+  require 'plugins.tiny-inline-diagnostic',
+
+  require 'plugins.copilot-chat',
+
   require 'plugins.surround',
 
   require 'plugins.git-conflict',
@@ -29,6 +33,8 @@ require('lazy').setup({
 
   require 'plugins.gruvbox',
 
+  require 'plugins.tokyonight',
+
   require 'plugins.local-highlight',
 
   require 'plugins.arduino-nvim',
@@ -45,7 +51,7 @@ require('lazy').setup({
 
   require 'plugins.treesitter-context',
 
-  require 'plugins.mini',
+  -- require 'plugins.mini',
 
   require 'plugins.treesitter',
 

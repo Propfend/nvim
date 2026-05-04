@@ -30,6 +30,10 @@ vim.keymap.set({ 'i', 'n' }, '<leader>q', function()
   vim.cmd(':%s/' .. pattern .. '/' .. escaped_repl .. '/g')
 end)
 
+vim.keymap.set({ 'n', 'v' }, 'cc', ':CopilotChatFix<CR>', { desc = 'Fix the selected codeblock using Copilot' })
+
+vim.keymap.set('n', '<leader>e', vim.diagnostic.open_float, { desc = '[E]xpand diagnostic message' })
+
 vim.keymap.set('t', '<Esc><Esc>', '<C-\\><C-n>', { desc = 'Exit terminal mode' })
 
 vim.keymap.set({ 'n', 'v' }, 'f,', '<Cmd>BufferPrevious<CR>', { desc = 'Switch to previous window' })
@@ -164,7 +168,7 @@ vim.keymap.set('n', 'gd', function()
   resolve_symbol_location(word, function(_, location)
     vim.schedule(function()
       close_floating_windows()
-      vim.lsp.util.jump_to_location(location, 'utf-8', false)
+      vim.lsp.util.show_document_with({ focus = true }, location, 'utf-8', false)
     end)
   end)
 end, { silent = true })

@@ -20,6 +20,7 @@ vim.diagnostic.config {
   update_in_insert = true,
 }
 
+vim.lsp.log.set_level 'trace'
 local builtin = require 'telescope.builtin'
 vim.keymap.set('n', '<leader>f', builtin.live_grep, { desc = 'Telescope find files' })
 
@@ -91,14 +92,14 @@ require('image').setup {
   hijack_file_patterns = { '*.png', '*.jpg', '*.jpeg', '*.gif', '*.webp', '*.avif' }, -- render image files as images when opened
 }
 
-vim.cmd [[colorscheme gruvbox]]
+vim.cmd.colorscheme 'tokyonight'
 
-vim.cmd [[
-  highlight Normal guibg=none
-  highlight NonText guibg=none
-  highlight Normal ctermbg=none
-  highlight NonText ctermbg=none
-]]
+-- vim.cmd [[
+--   highlight Normal guibg=none
+--   highlight NonText guibg=none
+--   highlight Normal ctermbg=none
+--   highlight NonText ctermbg=none
+-- ]]
 
 local function compile_and_upload_arduino_sketch()
   vim.cmd 'w'

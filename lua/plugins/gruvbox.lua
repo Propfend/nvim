@@ -29,6 +29,6 @@ return {
       LspReferenceWrite = { bg = '#4a3a2a' },
       MatchParen = { bg = '#3c4048', bold = true },
     },
-    transparent_mode = true,
+    transparent_mode = false,
   },
 }
