@@ -2,6 +2,9 @@ return {
   {
     'lewis6991/gitsigns.nvim',
     opts = {
+      watch_gitdir = {
+        follow_files = true,
+      },
       signs = {
         add = { text = '+' },
         change = { text = '~' },
