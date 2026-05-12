@@ -228,6 +228,36 @@ return {
         end,
       })
 
+      vim.api.nvim_create_autocmd('LspAttach', {
+        callback = function(event)
+          local client = vim.lsp.get_client_by_id(event.data.client_id)
+          if not client or client.name ~= 'cssls' then
+            return
+          end
+
+          vim.keymap.set('n', 'gd', function()
+            local line = vim.api.nvim_get_current_line()
+            local import_path = line:match "@import%s+['\"]([^'\"]+)['\"]"
+              or line:match '@import%s+url%("([^"]+)"%)'
+              or line:match "@import%s+url%('([^']+)'%)"
+              or line:match '@import%s+url%(([^)]+)%)'
+
+            if import_path then
+              local dir = vim.fn.fnamemodify(vim.api.nvim_buf_get_name(0), ':h')
+              local target = vim.fn.resolve(dir .. '/' .. import_path)
+              if vim.fn.filereadable(target) == 1 then
+                vim.cmd('edit ' .. vim.fn.fnameescape(target))
+              else
+                vim.notify('Import not found: ' .. import_path, vim.log.levels.WARN)
+              end
+              return
+            end
+
+            require('telescope.builtin').grep_string()
+          end, { buffer = event.buf, silent = true })
+        end,
+      })
+
       vim.lsp.enable 'ast_grep'
       -- Diagnostic Config
       -- See :help vim.diagnostic.Opts
