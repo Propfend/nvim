@@ -1,1 +1,1 @@
-/nix/store/rwf52argdpaml2sll4fcc1baiwmr73l5-home-manager-files/.config/nvim/after/plugin/clipboard.lua
+/nix/store/lc6nv3bdrmm61saab30mwcy2xx7r8q9w-home-manager-files/.config/nvim/after/plugin/clipboard.lua

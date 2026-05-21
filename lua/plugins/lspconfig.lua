@@ -375,7 +375,14 @@ return {
         },
 
         ts_ls = {},
-        cssls = {},
+        cssls = {
+          flags = {
+            debounce_text_changes = 150,
+          },
+          on_init = function(client)
+            client.server_capabilities.textDocumentSync = vim.lsp.protocol.TextDocumentSyncKind.Full
+          end,
+        },
         html = {},
         yamlls = {},
         jsonls = {},

@@ -196,6 +196,14 @@ end, { silent = true })
 
 vim.keymap.set('n', 'h', '<Nop>')
 
+vim.keymap.set('v', '<leader>w', function()
+  local tag = vim.fn.input('HTML tag: ')
+  if tag == '' then
+    return
+  end
+  vim.cmd('normal! `>a</' .. tag .. '>\27`<i<' .. tag .. '>\27')
+end, { desc = 'Wrap selection in HTML tag' })
+
 vim.api.nvim_create_autocmd('TextYankPost', {
   desc = 'Highlight when yanking (copying) text',
   group = vim.api.nvim_create_augroup('highlight-yank', { clear = true }),
