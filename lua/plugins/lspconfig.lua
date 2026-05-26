@@ -387,6 +387,17 @@ return {
         yamlls = {},
         jsonls = {},
 
+        arduino_language_server = {
+          cmd = {
+            'arduino-language-server',
+            '-clangd', 'clangd',
+            '-cli', 'arduino-cli',
+            '-cli-config', vim.fn.expand '~/.arduino15/arduino-cli.yaml',
+            '-fqbn', 'arduino:avr:uno',
+          },
+          filetypes = { 'arduino' },
+        },
+
         lua_ls = {
           -- cmd = { ... },
           -- filetypes = { ... },
