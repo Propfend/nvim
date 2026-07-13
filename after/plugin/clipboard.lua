@@ -1,1 +1,13 @@
-/nix/store/gc6s5r4mxyybx481kps7xki3s8zn8wzl-home-manager-files/.config/nvim/after/plugin/clipboard.lua
+vim.g.clipboard = {
+  name = "wl-clipboard",
+  copy = {
+    ["+"] = "wl-copy",
+    ["*"] = "wl-copy --primary",
+  },
+  paste = {
+    ["+"] = "wl-paste --no-newline",
+    ["*"] = "wl-paste --no-newline --primary",
+  },
+  cache_enabled = 0,
+}
+vim.o.clipboard = "unnamedplus"

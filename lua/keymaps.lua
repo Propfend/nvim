@@ -36,9 +36,9 @@ vim.keymap.set('n', '<leader>e', vim.diagnostic.open_float, { desc = '[E]xpand d
 
 vim.keymap.set('t', '<Esc><Esc>', '<C-\\><C-n>', { desc = 'Exit terminal mode' })
 
-vim.keymap.set({ 'n', 'v' }, 'f,', '<Cmd>BufferPrevious<CR>', { desc = 'Switch to previous window' })
-vim.keymap.set({ 'n', 'v' }, 'f.', '<Cmd>BufferNext<CR>', { desc = 'Switch to next window' })
-vim.keymap.set({ 'n', 'v' }, 'ff', '<Cmd>BufferClose<CR>', { desc = 'Close buffer' })
+vim.keymap.set({ 'n', 'v' }, 'J', '<Cmd>BufferPrevious<CR>', { desc = 'Switch to previous window' })
+vim.keymap.set({ 'n', 'v' }, '<Char-199>', '<Cmd>BufferNext<CR>', { desc = 'Switch to next window' })
+vim.keymap.set({ 'n', 'v' }, 'q', '<Cmd>BufferClose<CR>', { desc = 'Close buffer' })
 
 local function is_floating_window()
   local win_config = vim.api.nvim_win_get_config(0)
@@ -197,7 +197,7 @@ end, { silent = true })
 vim.keymap.set('n', 'h', '<Nop>')
 
 vim.keymap.set('v', '<leader>w', function()
-  local tag = vim.fn.input('HTML tag: ')
+  local tag = vim.fn.input 'HTML tag: '
   if tag == '' then
     return
   end
