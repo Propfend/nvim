@@ -1,81 +1,77 @@
 require('lazy').setup({
-  'NMAC427/guess-indent.nvim',
+    'NMAC427/guess-indent.nvim',
 
-  require 'plugins.gitsigns',
+    require 'plugins.gitsigns',
 
-  require 'plugins.tiny-inline-diagnostic',
+    require 'plugins.tiny-inline-diagnostic',
 
-  require 'plugins.copilot-chat',
+    require 'plugins.copilot-chat',
 
-  require 'plugins.surround',
+    require 'plugins.surround',
 
-  require 'plugins.git-conflict',
+    require 'plugins.term-edit',
 
-  require 'plugins.nvim-fugitive',
+    require 'plugins.git-conflict',
 
-  require 'plugins.markdown-preview',
+    require 'plugins.smear-cursor',
 
-  require 'plugins.hop',
+    require 'plugins.nvim-fugitive',
 
-  require 'plugins.gitsigns',
+    require 'plugins.markdown-preview',
 
-  require 'plugins.rhai',
+    require 'plugins.gitsigns',
 
-  require 'plugins.image',
+    require 'plugins.image',
 
-  require 'plugins.telescope',
+    require 'plugins.telescope',
 
-  require 'plugins.copilot',
+    require 'plugins.copilot',
 
-  require 'plugins.lspconfig',
+    require 'plugins.lspconfig',
 
-  require 'plugins.conform',
+    require 'plugins.conform',
 
-  require 'plugins.gruvbox',
+    require 'plugins.tokyonight',
 
-  require 'plugins.tokyonight',
+    require 'plugins.local-highlight',
 
-  require 'plugins.local-highlight',
+    require 'plugins.arduino-nvim',
 
-  require 'plugins.arduino-nvim',
+    require 'plugins.nvim-web-devicons',
 
-  require 'plugins.nvim-scrollbar',
+    require 'plugins.nvim-barbar',
 
-  require 'plugins.nvim-web-devicons',
+    require 'plugins.snacks',
 
-  require 'plugins.nvim-barbar',
+    require 'plugins.blink-cmp',
 
-  require 'plugins.snacks',
+    require 'plugins.treesitter-context',
 
-  require 'plugins.blink-cmp',
+    -- require 'plugins.mini',
 
-  require 'plugins.treesitter-context',
+    require 'plugins.treesitter',
 
-  -- require 'plugins.mini',
+    require 'plugins.indent-line',
 
-  require 'plugins.treesitter',
+    require 'plugins.autopairs',
 
-  require 'plugins.indent-line',
-
-  require 'plugins.autopairs',
-
-  require 'plugins.neo-tree',
+    require 'plugins.neo-tree',
 }, {
-  ui = {
-    icons = vim.g.have_nerd_font and {} or {
-      cmd = '⌘',
-      config = '🛠',
-      event = '📅',
-      ft = '📂',
-      init = '⚙',
-      keys = '🗝',
-      plugin = '🔌',
-      runtime = '💻',
-      require = '🌙',
-      source = '📄',
-      start = '🚀',
-      task = '📌',
-      lazy = '💤 ',
+    ui = {
+        icons = vim.g.have_nerd_font and {} or {
+            cmd = '⌘',
+            config = '🛠',
+            event = '📅',
+            ft = '📂',
+            init = '⚙',
+            keys = '🗝',
+            plugin = '🔌',
+            runtime = '💻',
+            require = '🌙',
+            source = '📄',
+            start = '🚀',
+            task = '📌',
+            lazy = '💤 ',
+        },
     },
-  },
 })
