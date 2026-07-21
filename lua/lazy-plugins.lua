@@ -5,6 +5,8 @@ require('lazy').setup({
 
     require 'plugins.tiny-inline-diagnostic',
 
+    require 'plugins.firenvim',
+
     require 'plugins.copilot-chat',
 
     require 'plugins.surround',

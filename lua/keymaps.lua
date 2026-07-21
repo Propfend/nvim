@@ -4,6 +4,10 @@ vim.api.nvim_set_keymap('n', '<C-d>', '<C-d>zz', { noremap = true, silent = true
 
 vim.api.nvim_set_keymap('n', '<C-u>', '<C-u>zz', { noremap = true, silent = true })
 
+vim.opt.virtualedit = "onemore"
+
+vim.keymap.set("i", "<Esc>", "<Esc>l", { desc = "Exit insert mode without moving left" })
+
 vim.keymap.set('n', '<leader>q', vim.diagnostic.setloclist, { desc = 'Open diagnostic [Q]uickfix list' })
 
 vim.g.copilot_no_tab_map = true
@@ -35,10 +39,6 @@ vim.keymap.set({ 'n', 'v' }, 'cc', ':CopilotChatFix<CR>', { desc = 'Fix the sele
 vim.keymap.set('n', '<leader>e', vim.diagnostic.open_float, { desc = '[E]xpand diagnostic message' })
 
 vim.keymap.set('t', '<Esc>', '<C-\\><C-n>', { desc = 'Exit terminal mode' })
-
-vim.keymap.set('t', '<C-l>', function()
-    vim.fn.chansend(vim.b.terminal_job_id, '\12')
-end, { desc = 'Clear terminal' })
 
 local function move_terminal_cursor(motion, escape_sequence)
     return function()
@@ -240,3 +240,28 @@ vim.api.nvim_create_autocmd('TextYankPost', {
         vim.hl.on_yank()
     end,
 })
+--
+-- -- Firenvim
+if vim.g.started_by_firenvim == true then
+    vim.api.nvim_create_autocmd('BufEnter', {
+        pattern = '*',
+        callback = function()
+            vim.fn.timer_start(15, function()
+                vim.cmd 'startinsert'
+            end)
+        end,
+    })
+end
+
+vim.g.firenvim_config = {
+    globalSettings = { alt = "all" },
+    localSettings = {
+        [".*"] = {
+            cmdline  = "neovim",
+            content  = "text",
+            priority = 0,
+            selector = "textarea, input",
+            takeover = "always"
+        }
+    }
+}
