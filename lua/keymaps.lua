@@ -243,12 +243,33 @@ vim.api.nvim_create_autocmd('TextYankPost', {
 --
 -- -- Firenvim
 if vim.g.started_by_firenvim == true then
+    vim.o.swapfile = false
+
     vim.api.nvim_create_autocmd('BufEnter', {
         pattern = '*',
         callback = function()
             vim.fn.timer_start(15, function()
                 vim.cmd 'startinsert'
             end)
+        end,
+    })
+
+    vim.api.nvim_create_autocmd('BufEnter', {
+        pattern = '*',
+        callback = function()
+
+ current_buffer_name = vim.api.nvim_buf_get_name(0)
+            local document_file_extension = current_buffer_name:match '([%a%d]+)$'
+            local buffer_filetype = document_file_extension and
+                vim.filetype.match { filename = 'buffer.' .. document_file_extension }
+
+            if buffer_filetype then
+                new_buffer_name = ("%s.%s"):format(current_buffer_name, buffer_filetype)
+                vim.bo.filetype = "." .. buffer_filetype
+
+
+vim.api.nvim_buf_set_name(0, new_buffer_name)
+            end
         end,
     })
 end
@@ -261,7 +282,8 @@ vim.g.firenvim_config = {
             content  = "text",
             priority = 0,
             selector = "textarea, input",
-            takeover = "always"
+            takeover = "always",
+            filename = "{hostname}-{pathname%50}"
         }
     }
 }
