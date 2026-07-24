@@ -4,6 +4,10 @@ vim.api.nvim_set_keymap('n', '<C-d>', '<C-d>zz', { noremap = true, silent = true
 
 vim.api.nvim_set_keymap('n', '<C-u>', '<C-u>zz', { noremap = true, silent = true })
 
+vim.api.nvim_set_keymap('n', 'd', '"_dd', { noremap = true, silent = true })
+
+vim.api.nvim_set_keymap('n', 'x', 'dd', { noremap = true, silent = true })
+
 vim.opt.virtualedit = "onemore"
 
 vim.keymap.set("i", "<Esc>", "<Esc>l", { desc = "Exit insert mode without moving left" })
@@ -257,8 +261,7 @@ if vim.g.started_by_firenvim == true then
     vim.api.nvim_create_autocmd('BufEnter', {
         pattern = '*',
         callback = function()
-
- current_buffer_name = vim.api.nvim_buf_get_name(0)
+            current_buffer_name = vim.api.nvim_buf_get_name(0)
             local document_file_extension = current_buffer_name:match '([%a%d]+)$'
             local buffer_filetype = document_file_extension and
                 vim.filetype.match { filename = 'buffer.' .. document_file_extension }
@@ -268,7 +271,7 @@ if vim.g.started_by_firenvim == true then
                 vim.bo.filetype = "." .. buffer_filetype
 
 
-vim.api.nvim_buf_set_name(0, new_buffer_name)
+                vim.api.nvim_buf_set_name(0, new_buffer_name)
             end
         end,
     })
@@ -281,7 +284,7 @@ vim.g.firenvim_config = {
             cmdline  = "neovim",
             content  = "text",
             priority = 0,
-            selector = "textarea, input",
+            selector = "textarea, input[type='text'], input[type='number'], input[type='hidden'], input[type='search'], div[contenteditable='true'], [role='textbox']",
             takeover = "always",
             filename = "{hostname}-{pathname%50}"
         }
