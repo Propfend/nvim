@@ -374,7 +374,6 @@ return {
           },
         },
 
-        ts_ls = {},
         cssls = {
           flags = {
             debounce_text_changes = 150,
@@ -386,6 +385,7 @@ return {
         html = {},
         yamlls = {},
         jsonls = {},
+        vimls = {},
 
         arduino_language_server = {
           cmd = {

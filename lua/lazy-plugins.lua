@@ -31,6 +31,8 @@ require('lazy').setup({
 
     require 'plugins.lspconfig',
 
+    require 'plugins.typescript-tools',
+
     require 'plugins.conform',
 
     require 'plugins.tokyonight',

@@ -33,6 +33,7 @@
   "term-edit.nvim": { "branch": "master", "commit": "b190a91178ef98beefac2ec0823db047978ea327" },
   "tiny-inline-diagnostic.nvim": { "branch": "main", "commit": "147af4e49f51dd48f41972de26552872b8ba7b25" },
   "tokyonight.nvim": { "branch": "main", "commit": "cdc07ac78467a233fd62c493de29a17e0cf2b2b6" },
+  "typescript-tools.nvim": { "branch": "master", "commit": "c2f5910074103705661e9651aa841e0d7eea9932" },
   "vim-fugitive": { "branch": "master", "commit": "3b753cf8c6a4dcde6edee8827d464ba9b8c4a6f0" },
   "vim-surround": { "branch": "master", "commit": "3d188ed2113431cf8dac77be61b842acb64433d9" }
 }
