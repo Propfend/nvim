@@ -58,7 +58,7 @@ return {
                 never_show = { '.git' },
             },
             window = {
-                width = 30,
+                width = 28,
                 mappings = {
                     ['\\'] = 'close_window',
                     ['n'] = 'open',
