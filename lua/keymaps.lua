@@ -267,9 +267,8 @@ if vim.g.started_by_firenvim == true then
                 vim.filetype.match { filename = 'buffer.' .. document_file_extension }
 
             if buffer_filetype then
-                new_buffer_name = ("%s.%s"):format(current_buffer_name, buffer_filetype)
-                vim.bo.filetype = "." .. buffer_filetype
-
+                new_buffer_name = ("%s.%s"):format(current_buffer_name, document_file_extension)
+                vim.bo.filetype = buffer_filetype
 
                 vim.api.nvim_buf_set_name(0, new_buffer_name)
             end
@@ -284,9 +283,11 @@ vim.g.firenvim_config = {
             cmdline  = "neovim",
             content  = "text",
             priority = 0,
-            selector = "textarea, input[type='text'], input[type='number'], input[type='hidden'], input[type='search'], div[contenteditable='true'], [role='textbox']",
+            selector =
+            "textarea, input[type='text'], input[type='number'], input[type='hidden'], input[type='search'], div[contenteditable='true'], [role='textbox']",
             takeover = "always",
-            filename = "{hostname}-{pathname%50}"
-        }
+            filename = "{hostname}-{timestamp%15}-{pathname%50}"
+        },
+        ["discord.com"] = { selector = "", priority = 1 }
     }
 }
