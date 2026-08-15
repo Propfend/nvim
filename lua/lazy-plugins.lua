@@ -3,6 +3,8 @@ require('lazy').setup({
 
     require 'plugins.gitsigns',
 
+    require 'plugins.kitty-scrollback',
+
     require 'plugins.tiny-inline-diagnostic',
 
     require 'plugins.firenvim',

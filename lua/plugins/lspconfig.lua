@@ -112,19 +112,13 @@ return {
             end
           end
 
+          local client = vim.lsp.get_client_by_id(event.data.client_id)
+
           -- The following two autocommands are used to highlight references of the
           -- word under your cursor when your cursor rests there for a little while.
           --    See `:help CursorHold` for information about when this is executed
           --
           -- When you move your cursor, the highlights will be cleared (the second autocommand).
-          if client and client_supports_method(client, vim.lsp.protocol.Methods.textDocument_hover, event.buf) then
-            vim.api.nvim_create_autocmd('CursorHold', {
-              buffer = event.buf,
-              callback = vim.lsp.buf.hover,
-            })
-          end
-
-          local client = vim.lsp.get_client_by_id(event.data.client_id)
           local highlight_augroup = vim.api.nvim_create_augroup('kickstart-lsp-highlight', { clear = false })
           if client and client_supports_method(client, vim.lsp.protocol.Methods.textDocument_documentHighlight, event.buf) then
             vim.api.nvim_create_autocmd({ 'CursorHold', 'CursorHoldI' }, {
@@ -305,8 +299,13 @@ return {
       --        For example, to see the options for `lua_ls`, you could go to: https://luals.github.io/wiki/settings/
       local servers = {
         -- clangd = {},
-        -- gopls = {},
         pyright = {},
+
+        gopls = {
+          cmd = { 'gopls' },
+          filetypes = { 'go', 'gomod', 'gowork', 'gotmpl' },
+          root_markers = { 'go.work', 'go.mod', '.git' },
+        },
 
         rust_analyzer = {
           settings = {
