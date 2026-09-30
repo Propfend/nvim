@@ -316,7 +316,7 @@ return {
               check = {
                 command = 'clippy',
               },
-              checkOnSave = false,
+              checkOnSave = true,
               diagnostics = {
                 enable = true,
                 experimental = {

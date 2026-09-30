@@ -5,6 +5,8 @@ require('lazy').setup({
 
     require 'plugins.kitty-scrollback',
 
+    require 'plugins.none-ls',
+
     require 'plugins.tiny-inline-diagnostic',
 
     require 'plugins.firenvim',

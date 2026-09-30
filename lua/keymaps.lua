@@ -8,6 +8,9 @@ vim.api.nvim_set_keymap('n', 'd', '"_dd', { noremap = true, silent = true })
 
 vim.api.nvim_set_keymap('n', 'x', 'dd', { noremap = true, silent = true })
 
+vim.keymap.set('x', 'p', 'P', { desc = 'Paste over a selection without overwriting the register' })
+vim.keymap.set('x', 'P', 'P', { desc = 'Paste over a selection without overwriting the register' })
+
 vim.opt.virtualedit = "onemore"
 
 vim.keymap.set("i", "<Esc>", "<Esc>l", { desc = "Exit insert mode without moving left" })
@@ -182,6 +185,11 @@ vim.keymap.set({ 'n', 'v' }, 'k', '<Up>')
 vim.keymap.set({ 'n', 'v' }, 'l', '<Down>')
 vim.keymap.set({ 'n', 'v' }, '<Char-231>', '<Right>')
 
+vim.keymap.set('n', '<C-w>j', '<C-w>h', { desc = 'Go to the left window' })
+vim.keymap.set('n', '<C-w>l', '<C-w>j', { desc = 'Go to the lower window' })
+vim.keymap.set('n', '<C-w><Char-231>', '<C-w>l', { desc = 'Go to the right window' })
+vim.keymap.set('n', '<C-w>h', '<Nop>')
+
 vim.keymap.set('n', '<leader>k', function()
     require('treesitter-context').go_to_context(vim.v.count1)
 end, { silent = true })
@@ -226,6 +234,19 @@ vim.keymap.set('n', 'gr', function()
         end)
     end)
 end, { silent = true })
+
+vim.api.nvim_create_autocmd('FileType', {
+    desc = 'Jump to quickfix and location list entries with n instead of Enter',
+    group = vim.api.nvim_create_augroup('quickfix-jump-key', { clear = true }),
+    pattern = 'qf',
+    callback = function(args)
+        vim.keymap.set('n', 'n', '<CR>', {
+            buffer = args.buf,
+            desc = 'Jump to the entry under the cursor',
+        })
+        vim.keymap.set('n', '<CR>', '<Nop>', { buffer = args.buf })
+    end,
+})
 
 vim.keymap.set('n', 'h', '<Nop>')
 

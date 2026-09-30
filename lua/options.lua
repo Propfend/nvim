@@ -12,6 +12,10 @@ vim.g.lazyvim_eslint_auto_format = true
 
 vim.opt.tabstop = 4
 
+vim.opt.endofline = false
+
+vim.opt.fixendofline = false
+
 vim.o.mouse = 'a'
 
 vim.o.showmode = false
