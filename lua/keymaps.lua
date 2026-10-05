@@ -1,27 +1,28 @@
-vim.keymap.set('n', '<Esc>', '<cmd>nohlsearch<CR>')
+vim.keymap.set('n', '<Esc>', '<cmd>nohlsearch<CR>', { unique = true })
 
-vim.api.nvim_set_keymap('n', '<C-d>', '<C-d>zz', { noremap = true, silent = true })
+vim.api.nvim_set_keymap('n', '<C-d>', '<C-d>zz', { noremap = true, silent = true, unique = true })
 
-vim.api.nvim_set_keymap('n', '<C-u>', '<C-u>zz', { noremap = true, silent = true })
+vim.api.nvim_set_keymap('n', '<C-u>', '<C-u>zz', { noremap = true, silent = true, unique = true })
 
-vim.api.nvim_set_keymap('n', 'd', '"_dd', { noremap = true, silent = true })
+vim.api.nvim_set_keymap('n', 'd', '"_dd', { noremap = true, silent = true, unique = true })
 
-vim.api.nvim_set_keymap('n', 'x', 'dd', { noremap = true, silent = true })
+vim.api.nvim_set_keymap('n', 'x', 'dd', { noremap = true, silent = true, unique = true })
 
-vim.keymap.set('x', 'p', 'P', { desc = 'Paste over a selection without overwriting the register' })
-vim.keymap.set('x', 'P', 'P', { desc = 'Paste over a selection without overwriting the register' })
+vim.keymap.set('x', 'p', 'P', { desc = 'Paste over a selection without overwriting the register', unique = true })
+vim.keymap.set('x', 'P', 'P', { desc = 'Paste over a selection without overwriting the register', unique = true })
 
-vim.opt.virtualedit = "onemore"
+vim.opt.virtualedit = 'onemore'
 
-vim.keymap.set("i", "<Esc>", "<Esc>l", { desc = "Exit insert mode without moving left" })
+vim.keymap.set('i', '<Esc>', '<Esc>l', { desc = 'Exit insert mode without moving left', unique = true })
 
-vim.keymap.set('n', '<leader>q', vim.diagnostic.setloclist, { desc = 'Open diagnostic [Q]uickfix list' })
+vim.keymap.set('n', '<leader>Q', vim.diagnostic.setloclist, { desc = 'Open diagnostic [Q]uickfix list', unique = true })
 
 vim.g.copilot_no_tab_map = true
 vim.keymap.set('i', '<C-Tab>', 'copilot#Accept("\\<CR>")', {
     expr = true,
     replace_keycodes = false,
     desc = 'Accept Copilot suggestion',
+    unique = true,
 })
 
 vim.keymap.set({ 'i', 'n' }, '<leader>q', function()
@@ -39,13 +40,13 @@ vim.keymap.set({ 'i', 'n' }, '<leader>q', function()
     local escaped_repl = vim.fn.escape(replacement, '\\/')
 
     vim.cmd(':%s/' .. pattern .. '/' .. escaped_repl .. '/g')
-end)
+end, { unique = true })
 
-vim.keymap.set({ 'n', 'v' }, 'cc', ':CopilotChatFix<CR>', { desc = 'Fix the selected codeblock using Copilot' })
+vim.keymap.set({ 'n', 'v' }, 'cc', ':CopilotChatFix<CR>', { desc = 'Fix the selected codeblock using Copilot', unique = true })
 
-vim.keymap.set('n', '<leader>e', vim.diagnostic.open_float, { desc = '[E]xpand diagnostic message' })
+vim.keymap.set('n', '<leader>e', vim.diagnostic.open_float, { desc = '[E]xpand diagnostic message', unique = true })
 
-vim.keymap.set('t', '<Esc>', '<C-\\><C-n>', { desc = 'Exit terminal mode' })
+vim.keymap.set('t', '<Esc>', '<C-\\><C-n>', { desc = 'Exit terminal mode', unique = true })
 
 local function move_terminal_cursor(motion, escape_sequence)
     return function()
@@ -72,9 +73,9 @@ vim.api.nvim_create_autocmd('TermOpen', {
     end,
 })
 
-vim.keymap.set({ 'n', 'v' }, ',', '<Cmd>BufferPrevious<CR>', { desc = 'Switch to previous window' })
-vim.keymap.set({ 'n', 'v' }, '.', '<Cmd>BufferNext<CR>', { desc = 'Switch to next window' })
-vim.keymap.set({ 'n', 'v' }, 'q', '<Cmd>BufferClose<CR>', { desc = 'Close buffer' })
+vim.keymap.set({ 'n', 'v' }, ',', '<Cmd>BufferPrevious<CR>', { desc = 'Switch to previous window', unique = true })
+vim.keymap.set({ 'n', 'v' }, '.', '<Cmd>BufferNext<CR>', { desc = 'Switch to next window', unique = true })
+vim.keymap.set({ 'n', 'v' }, 'q', '<Cmd>BufferClose<CR>', { desc = 'Close buffer', unique = true })
 
 local function is_floating_window()
     local win_config = vim.api.nvim_win_get_config(0)
@@ -172,27 +173,27 @@ vim.keymap.set('n', 'K', function()
             end)
         end, target_bufnr)
     end)
-end)
+end, { unique = true })
 
-vim.keymap.set('n', 'gdf', '<Cmd>Gdiffsplit<CR>')
+vim.keymap.set('n', 'gdf', '<Cmd>Gdiffsplit<CR>', { unique = true })
 
-vim.keymap.set('n', 'dg', '<Cmd>diffget<CR>')
+vim.keymap.set('n', 'dg', '<Cmd>diffget<CR>', { unique = true })
 
-vim.keymap.set('n', 'dp', '<Cmd>diffput<CR>')
+vim.keymap.set('n', 'dp', '<Cmd>diffput<CR>', { unique = true })
 
-vim.keymap.set({ 'n', 'v' }, 'j', '<Left>')
-vim.keymap.set({ 'n', 'v' }, 'k', '<Up>')
-vim.keymap.set({ 'n', 'v' }, 'l', '<Down>')
-vim.keymap.set({ 'n', 'v' }, '<Char-231>', '<Right>')
+vim.keymap.set({ 'n', 'v' }, 'j', '<Left>', { unique = true })
+vim.keymap.set({ 'n', 'v' }, 'k', '<Up>', { unique = true })
+vim.keymap.set({ 'n', 'v' }, 'l', '<Down>', { unique = true })
+vim.keymap.set({ 'n', 'v' }, '<Char-231>', '<Right>', { unique = true })
 
-vim.keymap.set('n', '<C-w>j', '<C-w>h', { desc = 'Go to the left window' })
-vim.keymap.set('n', '<C-w>l', '<C-w>j', { desc = 'Go to the lower window' })
-vim.keymap.set('n', '<C-w><Char-231>', '<C-w>l', { desc = 'Go to the right window' })
-vim.keymap.set('n', '<C-w>h', '<Nop>')
+vim.keymap.set('n', '<C-w>j', '<C-w>h', { desc = 'Go to the left window', unique = true })
+vim.keymap.set('n', '<C-w>l', '<C-w>j', { desc = 'Go to the lower window', unique = true })
+vim.keymap.set('n', '<C-w><Char-231>', '<C-w>l', { desc = 'Go to the right window', unique = true })
+vim.keymap.set('n', '<C-w>h', '<Nop>', { unique = true })
 
 vim.keymap.set('n', '<leader>k', function()
     require('treesitter-context').go_to_context(vim.v.count1)
-end, { silent = true })
+end, { silent = true, unique = true })
 
 vim.keymap.set('n', 'gd', function()
     if not is_floating_window() then
@@ -212,7 +213,7 @@ vim.keymap.set('n', 'gd', function()
             vim.lsp.util.show_document_with({ focus = true }, location, 'utf-8', false)
         end)
     end)
-end, { silent = true })
+end, { silent = true, unique = true })
 
 vim.keymap.set('n', 'gr', function()
     if not is_floating_window() then
@@ -233,7 +234,7 @@ vim.keymap.set('n', 'gr', function()
             vim.lsp.buf.references()
         end)
     end)
-end, { silent = true })
+end, { silent = true, unique = true })
 
 vim.api.nvim_create_autocmd('FileType', {
     desc = 'Jump to quickfix and location list entries with n instead of Enter',
@@ -248,7 +249,7 @@ vim.api.nvim_create_autocmd('FileType', {
     end,
 })
 
-vim.keymap.set('n', 'h', '<Nop>')
+vim.keymap.set('n', 'h', '<Nop>', { unique = true })
 
 vim.keymap.set('v', '<leader>w', function()
     local tag = vim.fn.input 'HTML tag: '
@@ -256,7 +257,7 @@ vim.keymap.set('v', '<leader>w', function()
         return
     end
     vim.cmd('normal! `>a</' .. tag .. '>\27`<i<' .. tag .. '>\27')
-end, { desc = 'Wrap selection in HTML tag' })
+end, { desc = 'Wrap selection in HTML tag', unique = true })
 
 vim.api.nvim_create_autocmd('TextYankPost', {
     desc = 'Highlight when yanking (copying) text',
@@ -284,11 +285,10 @@ if vim.g.started_by_firenvim == true then
         callback = function()
             current_buffer_name = vim.api.nvim_buf_get_name(0)
             local document_file_extension = current_buffer_name:match '([%a%d]+)$'
-            local buffer_filetype = document_file_extension and
-                vim.filetype.match { filename = 'buffer.' .. document_file_extension }
+            local buffer_filetype = document_file_extension and vim.filetype.match { filename = 'buffer.' .. document_file_extension }
 
             if buffer_filetype then
-                new_buffer_name = ("%s.%s"):format(current_buffer_name, document_file_extension)
+                new_buffer_name = ('%s.%s'):format(current_buffer_name, document_file_extension)
                 vim.bo.filetype = buffer_filetype
 
                 vim.api.nvim_buf_set_name(0, new_buffer_name)
@@ -298,17 +298,16 @@ if vim.g.started_by_firenvim == true then
 end
 
 vim.g.firenvim_config = {
-    globalSettings = { alt = "all" },
+    globalSettings = { alt = 'all' },
     localSettings = {
-        [".*"] = {
-            cmdline  = "neovim",
-            content  = "text",
+        ['.*'] = {
+            cmdline = 'neovim',
+            content = 'text',
             priority = 0,
-            selector =
-            "textarea, input[type='text'], input[type='number'], input[type='hidden'], input[type='search'], div[contenteditable='true'], [role='textbox']",
-            takeover = "always",
-            filename = "{hostname}-{timestamp%15}-{pathname%50}"
+            selector = "textarea, input[type='text'], input[type='number'], input[type='hidden'], input[type='search'], div[contenteditable='true'], [role='textbox']",
+            takeover = 'always',
+            filename = '{hostname}-{timestamp%15}-{pathname%50}',
         },
-        ["discord.com"] = { selector = "", priority = 1 }
-    }
+        ['discord.com'] = { selector = '', priority = 1 },
+    },
 }
