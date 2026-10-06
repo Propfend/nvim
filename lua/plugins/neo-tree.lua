@@ -37,7 +37,7 @@ return {
                     { 'indent' },
                     { 'icon' },
                     { 'diagnostics' },
-                    { 'name',       use_git_status_colors = true },
+                    { 'name', use_git_status_colors = true },
                     { 'git_status', highlight = 'NeoTreeDimText' },
                 },
                 directory = {
@@ -45,7 +45,7 @@ return {
                     { 'icon' },
                     { 'diagnostics', errors_only = true },
                     { 'name' },
-                    { 'git_status',  highlight = 'NeoTreeDimText' },
+                    { 'git_status', highlight = 'NeoTreeDimText' },
                 },
             },
             follow_current_file = { enabled = true },

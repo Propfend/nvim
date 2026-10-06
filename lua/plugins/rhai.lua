@@ -1,3 +1,3 @@
 return {
-  'rhaiscript/vim-rhai',
+    'rhaiscript/vim-rhai',
 }

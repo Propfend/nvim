@@ -1,0 +1,7 @@
+{
+  "name": "nvim-config",
+  "private": true,
+  "devDependencies": {
+    "@johnnymorganz/stylua-bin": "^2.5.2"
+  }
+}
