@@ -9,12 +9,19 @@ return {
                 local disable_filetypes = { c = true, cpp = true, markdown = true }
                 if disable_filetypes[vim.bo[bufnr].filetype] then
                     return nil
-                else
+                end
+
+                if vim.bo[bufnr].filetype == 'lua' then
                     return {
-                        timeout_ms = 500,
-                        lsp_format = 'fallback',
+                        timeout_ms = 5000,
+                        lsp_format = 'never',
                     }
                 end
+
+                return {
+                    timeout_ms = 500,
+                    lsp_format = 'fallback',
+                }
             end,
             formatters_by_ft = {
                 lua = { 'stylua' },
