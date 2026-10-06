@@ -15,7 +15,7 @@ vim.opt.virtualedit = 'onemore'
 
 vim.keymap.set('i', '<Esc>', '<Esc>l', { desc = 'Exit insert mode without moving left', unique = true })
 
-vim.keymap.set('n', '<leader>Q', vim.diagnostic.setloclist, { desc = 'Open diagnostic [Q]uickfix list', unique = true })
+vim.keymap.set('n', '<leader>l', vim.diagnostic.setloclist, { desc = 'Open diagnostic [L]ocation list', unique = true })
 
 vim.g.copilot_no_tab_map = true
 vim.keymap.set('i', '<C-Tab>', 'copilot#Accept("\\<CR>")', {
