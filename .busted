@@ -1,0 +1,8 @@
+return {
+    default = {
+        ROOT = { 'lua/conversational-diagnostics-builder' },
+        pattern = '%.lua$',
+        ['exclude-pattern'] = { 'init%.lua$', 'request_diagnostics' },
+        lua = '.luarocks/bin/nlua',
+    },
+}

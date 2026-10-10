@@ -7,3 +7,4 @@ spell/
 .init.lua.swp
 node_modules/
 .claude/
+.luarocks/

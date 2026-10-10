@@ -10,9 +10,9 @@ local function request_diagnostics_from_inference_server(diagnostics_params, rep
         return
     end
 
-    request_body = build_request_body(diagnostics_params)
+    local request_body = build_request_body(diagnostics_params)
 
-    inference_server_address_completion_endpoint = vim.g.none_ls_inference_server_address .. '/v1/chat/completions'
+    local inference_server_address_completion_endpoint = vim.g.none_ls_inference_server_address .. '/v1/chat/completions'
 
     curl.post(inference_server_address_completion_endpoint, {
         headers = { content_type = 'application/json' },
