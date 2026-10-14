@@ -1,10 +1,9 @@
 nvim-config
 ===========
 
-Neovim configuration built on [lazy.nvim](https://github.com/folke/lazy.nvim),
-with a [none-ls](https://github.com/nvimtools/none-ls.nvim) source
-(`conversational-diagnostics-builder`) that generates LSP diagnostics from a
-natural-language prompt by calling an OpenAI-compatible inference server.
+Neovim configuration built on [lazy.nvim](https://github.com/folke/lazy.nvim).
+
+<img width="1281" height="705" alt="image" src="https://github.com/user-attachments/assets/fdf5934c-27a5-4e82-8434-a4b81cfff160" />
 
 Requirements
 ------------
@@ -107,22 +106,39 @@ make clean
 ```
 
 Tests live inside the files they cover, guarded by `if describe then` so they
-only run under busted. `init.lua` and
-`request_diagnostics_from_inference_server.lua` are excluded because they
-require none-ls and plenary.curl, which only exist inside a running Neovim.
+only run under busted. 
 
 Conversational diagnostics
 --------------------------
+
+Example:
 
 ```
 :PromptLSP flag every occurrence of the word I with warning severity
 ```
 
-The prompt is stored in `vim.g.none_ls_diagnostics_user_prompt` and sent with
-the buffer contents to `vim.g.none_ls_inference_server_address`
-(`http://127.0.0.1:8080` by default) as an OpenAI-compatible
-`/v1/chat/completions` request, with the diagnostics JSON schema in
-`response_format`. The reply is decoded into none-ls diagnostics.
+This commands sends the buffer contents to `http://127.0.0.1:8080` by default (you can change that through `vim.g.none_ls_inference_server_address` var, in `lua/conversational-diagnostics-builder/request_diagnostics_from_inference_server.lua`) as an OpenAI-compatible `/v1/chat/completions` request, with the diagnostics JSON schema in
+`response_format`.
+
+Manual installation
+-------------------
+
+Install the tools listed above with your own package manager first. Neovim must
+be 0.11 or newer; nothing else is needed to get started, since the language
+servers and formatters are only consulted for the filetypes you open.
+
+Clone the repository straight into the Neovim configuration directory. If you
+already have one, move it aside rather than merging.
+
+```
+git clone https://github.com/Propfend/nvim-config ~/.config/nvim
+```
+
+Start Neovim. [lazy.nvim](https://github.com/folke/lazy.nvim) bootstraps itself:
+
+```
+nvim
+```
 
 Docker
 ------
