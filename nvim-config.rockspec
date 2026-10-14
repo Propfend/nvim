@@ -1,5 +1,5 @@
 package = 'nvim-config'
-version = 'dev-1'
+version = '1'
 
 source = {
     url = 'git+https://github.com/Propfend/nvim-config',
