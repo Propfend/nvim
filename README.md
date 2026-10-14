@@ -129,7 +129,7 @@ Docker
 
 Builds an [Ubuntu](https://ubuntu.com/) 24.04 image with every tool above
 preinstalled and this configuration at `/root/.config/nvim`. The resulting
-image is roughly 4 GB, most of which is the Rust, Go and Nix toolchains.
+image is 4.32 GB:
 
 ```
 docker build -t nvim-config .
